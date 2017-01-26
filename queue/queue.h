@@ -56,7 +56,7 @@ public:
   }
 
   void Enqueue(T);
-  void Dequeue();
+  T Dequeue();
   bool isEmpty();
   long GetSize();
   void Display();

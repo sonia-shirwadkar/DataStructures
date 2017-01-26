@@ -36,32 +36,28 @@ void MyQueue<T>::Enqueue(T data){
 
 
 template<class T>
-void MyQueue<T>::Dequeue(){
+T MyQueue<T>::Dequeue(){
+  T data = T();
+
   if (isEmpty()){
     cout << "Empty queue" << endl;
-    return;
+    return data;
   }
   
   decrementCount();
-  
+
   Node<T>* temp = head;
-  Node<T>* prev = NULL;
-  
   if (NULL == head->getNext()){
     head = NULL;
     tail = NULL;
   }
   else{
-    while (temp->getNext() != NULL){
-      prev = temp;
-      temp = temp->getNext();
-    }
-
-    prev->setNext(NULL);
+    head = head->getNext();
   }
-  
+
+  data = temp->getData();
   delete temp;
-  return;
+  return data;
 }
 
 
@@ -82,7 +78,7 @@ int main(int argc, char* argv[]){
   q.Enqueue(3);
   q.Display();
   cout << "Dequeue" << endl;
-  q.Dequeue();
+  cout << q.Dequeue() << endl << endl;
   q.Display();
   cout << endl;
 }
