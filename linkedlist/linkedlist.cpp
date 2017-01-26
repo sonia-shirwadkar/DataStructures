@@ -36,7 +36,7 @@ template<class T>
 void MyLinkedList<T>::Insert(int pos, T data){
   int i;
 
-  if (pos <= 0 || pos > (GetSize()+2)){
+  if (pos <= 0 || pos > (GetSize()+1)){
     cout << "Invalid position" << endl;
     return;
   }
@@ -117,6 +117,7 @@ void MyLinkedList<T>::Remove(int pos){
       head = head->getNext();
     }
 
+	temp->setNext(NULL);
     delete temp;
     return;
   }
@@ -134,6 +135,7 @@ void MyLinkedList<T>::Remove(int pos){
   }
 
   prev->setNext(temp->getNext());
+  temp->setNext(NULL);
   delete temp;
   return;    
 }
@@ -141,9 +143,14 @@ void MyLinkedList<T>::Remove(int pos){
 
 int main(int argc, char* argv[]){
   MyLinkedList<int> list;
-  list.Append(1);
-  list.Append(2);
-  list.Append(3);
+  list.Insert(1,101);
+  list.Insert(2,102);
+  list.Insert(3,103);
+  //list.Insert(4,104);
+  list.Insert(5,105);
+  //list.Append(1);
+  //list.Append(2);
+  //list.Append(3);
   list.Insert(1, 0);
   list.Insert(2, 1);
   list.Display();

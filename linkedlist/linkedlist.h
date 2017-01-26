@@ -49,9 +49,11 @@ public:
   ~MyLinkedList(){
     while (NULL != head){
       Node<T>* temp = head;
-      delete head;
       head = head->getNext();
+      delete temp;
     }
+	tail=NULL;
+	count=0;
   }
 
   void Append(T);
